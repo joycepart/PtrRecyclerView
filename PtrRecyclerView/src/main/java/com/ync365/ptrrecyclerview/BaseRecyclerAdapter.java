@@ -15,17 +15,17 @@ import java.util.List;
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
 
-    public ArrayList<T> mDatas = new ArrayList<>();
+    protected List<T> mDatas = new ArrayList<>();
 
-    protected ArrayList<View> mHeaderViews = new ArrayList<>();
+    protected List<View> mHeaderViews = new ArrayList<>();
 
-    protected ArrayList<View> mFootViews = new ArrayList<>();
+    protected List<View> mFootViews = new ArrayList<>();
 
-    protected ArrayList<Integer> mHeaderViewTypes = new ArrayList<>();
-    protected ArrayList<Integer> mFooterViewTypes = new ArrayList<>();
+    protected List<Integer> mHeaderViewTypes = new ArrayList<>();
+    protected List<Integer> mFooterViewTypes = new ArrayList<>();
 
-    protected final int VIEW_TYPE_HEADER = Integer.MIN_VALUE;
-    protected final int VIEW_TYPE_FOOTER = Integer.MAX_VALUE;
+    protected final static int VIEW_TYPE_HEADER = Integer.MIN_VALUE;
+    protected final static int VIEW_TYPE_FOOTER = Integer.MAX_VALUE;
 
     IViewType viewTypes;
 
@@ -51,7 +51,9 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRe
     View loadMoreFooterView;
 
     public void showloadMoreFooterView(boolean b) {
-        if (loadMoreFooterView == null) return;
+        if (loadMoreFooterView == null) {
+            return;
+        }
         RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) loadMoreFooterView.getLayoutParams();
         if (b) {
             int w = View.MeasureSpec.makeMeasureSpec(0,

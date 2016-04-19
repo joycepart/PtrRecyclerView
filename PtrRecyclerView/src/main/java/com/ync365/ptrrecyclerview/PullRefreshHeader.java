@@ -17,13 +17,13 @@ import in.srain.cube.views.ptr.indicator.PtrIndicator;
  */
 public class PullRefreshHeader extends FrameLayout implements PtrUIHandler {
 
-    public LayoutInflater inflater;
+    private LayoutInflater inflater;
 
     // 下拉刷新视图（头部视图）
-    public ViewGroup headView;
+    private ViewGroup headView;
 
     // 下拉刷新文字
-    public TextView tvHeadTitle;
+    private TextView tvHeadTitle;
 
 
     public PullRefreshHeader(Context context) {

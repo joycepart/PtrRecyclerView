@@ -11,7 +11,7 @@ import android.view.ViewGroup;
  */
 public abstract class BaseSimpleRecyclerAdapter<T> extends BaseRecyclerAdapter {
 
-    private final int VIEW_TYPE_NORMAL = Integer.MAX_VALUE-Integer.MIN_VALUE;
+    private final static int VIEW_TYPE_NORMAL = Integer.MAX_VALUE-Integer.MIN_VALUE;
 
     public abstract int getItemViewLayoutId();
 
@@ -19,7 +19,7 @@ public abstract class BaseSimpleRecyclerAdapter<T> extends BaseRecyclerAdapter {
 
     public void bindData(BaseRecyclerViewHolder holder, Object itemBean, int position, int viewType){
         bindData(holder, itemBean, position);
-    };
+    }
 
 
     @Override
@@ -41,8 +41,6 @@ public abstract class BaseSimpleRecyclerAdapter<T> extends BaseRecyclerAdapter {
         }
 
     }
-
-
 
 
 

@@ -81,11 +81,8 @@ public class PtrRecyclerView extends PtrFrameLayout {
 
 
     public void setMode(final RecyclerMode mode) {
-        if (mode == RecyclerMode.BOTH || mode == RecyclerMode.TOP){
-            if(getPullRefreshHeaderView()==null) {
-                throw new RuntimeException("PullRefreshHeaderView is null,but you mode is apply");
-            }
-
+        if ((mode == RecyclerMode.BOTH || mode == RecyclerMode.TOP)&&(getPullRefreshHeaderView()==null)){
+            throw new NullPointerException("PullRefreshHeaderView is null,but you mode is apply");
         }
         setPtrHandler(new PtrHandler() {
             @Override
@@ -119,11 +116,11 @@ public class PtrRecyclerView extends PtrFrameLayout {
 
     RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
 
-        public int lastVisibleItemPosition;
+        private int lastVisibleItemPosition;
         /**
          * 是否发生了滚动
          */
-        public boolean isScrolled = false;
+        private boolean isScrolled = false;
 
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -156,12 +153,10 @@ public class PtrRecyclerView extends PtrFrameLayout {
             if (!isloading && isScrolled && (visibleItemCount > 0
                     && newState == RecyclerView.SCROLL_STATE_IDLE
                     && lastVisibleItemPosition >= totalItemCount - 1 && !noMoreData && !pullLoading)
-                    ) {
-                if (onLoadMoreListener != null) {
+                    &&(onLoadMoreListener != null)) {
                     isloading = true;
                     loadingMore = true;
                     onLoadMoreListener.onloadMore();
-                }
             }
         }
     };
